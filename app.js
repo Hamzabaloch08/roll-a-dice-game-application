@@ -20,7 +20,7 @@ let activePlayer1 = () => {
 let activePlayer2 = () => {
     player2.classList.add('activePlayer');
     player1.classList.remove('activePlayer');
-}
+};
 
 rollDice.addEventListener('click', (e) => {
     e.preventDefault();
