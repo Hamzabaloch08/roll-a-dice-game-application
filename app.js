@@ -108,16 +108,32 @@ holdScore.addEventListener('click', (e) => {
         player2Score.innerHTML = parseInt(player2Score.innerHTML || 0) + player2TotalScore;
         player2TotalScore = 0; // Reset round score
         player2DiceScore.innerHTML = player2TotalScore;
-        activePlayer1(); // Switch to Player 1
+
+        // Check if Player 2 has won
+        if (parseInt(player2Score.innerHTML) >= 100) {
+            alert('Player 2 wins the game!');
+            newGame.click(); // Restart the game
+            return; // Exit the function to prevent switching players
+        }
+
+        // Switch to Player 1
+        activePlayer1();
         currentPlayer = 1;
     } else {
         // Add Player 1's round score to their total score
         player1Score.innerHTML = parseInt(player1Score.innerHTML || 0) + player1TotalScore;
         player1TotalScore = 0; // Reset round score
         player1DiceScore.innerHTML = player1TotalScore;
-        activePlayer2(); // Switch to Player 2
+
+        // Check if Player 1 has won
+        if (parseInt(player1Score.innerHTML) >= 100) {
+            alert('Player 1 wins the game!');
+            newGame.click(); // Restart the game
+            return; // Exit the function to prevent switching players
+        }
+
+        // Switch to Player 2
+        activePlayer2();
         currentPlayer = 2;
     }
 });
-
-
