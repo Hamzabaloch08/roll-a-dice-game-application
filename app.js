@@ -43,32 +43,37 @@ let resetPlayer2 = () => {
     player2DiceScore.innerHTML = 0;
 };
 
+// Disable or Enable Buttons
+let updateButtonState = (holdDisable, rollDisable, newGameDisable) => {
+    holdScore.disabled = holdDisable;
+    rollDice.disabled = rollDisable;
+    newGame.disabled = newGameDisable;
+};
+
 // Start a new game: Reset scores, UI, and set Player 1 as active
 newGame.addEventListener('click', (e) => {
-    e.preventDefault(); // Prevent default form behavior (if inside a form)
+    e.preventDefault();
 
     // Reset scores and game state
-    player1Score.innerHTML = 0; // Reset Player 1's total score in the UI
-    player2Score.innerHTML = 0; // Reset Player 2's total score in the UI
-    player1TotalScore = 0; // Reset Player 1's running score
-    player2TotalScore = 0; // Reset Player 2's running score
-    player1DiceScore.innerHTML = 0; // Reset Player 1's dice score display
-    player2DiceScore.innerHTML = 0; // Reset Player 2's dice score display
+    player1Score.innerHTML = 0;
+    player2Score.innerHTML = 0;
+    player1TotalScore = 0;
+    player2TotalScore = 0;
+    player1DiceScore.innerHTML = 0;
+    player2DiceScore.innerHTML = 0;
 
-    // Set game state to Player 1's turn
-    currentPlayer = 1; // Reset to Player 1
-    activePlayer1(); // Highlight Player 1 as active
+    // Reset game state
+    currentPlayer = 1;
+    activePlayer1();
 
-    // Hide the dice image at the start of a new game
-    diceImg.src = './assets/1.png'; // Reset dice image to a default state
+    // Reset buttons and dice image
+    updateButtonState(true, false, false); // Disable "Hold", enable "Roll Dice", disable "New Game"
+    diceImg.src = './assets/1.png'; // Reset dice image
     diceImg.classList.add('diceImg'); // Hide the dice initially
 });
 
-
 // Roll the dice and update the current player's score
 rollDice.addEventListener('click', (e) => {
-    e.preventDefault();
-
     diceImg.classList.remove('diceImg'); // Show dice image
 
     // Generate a random dice number (1 to 6)
@@ -76,18 +81,16 @@ rollDice.addEventListener('click', (e) => {
     diceImg.src = `./assets/${diceNumber}.png`;
 
     if (currentPlayer === 2) {
-        // Player 2's turn
         activePlayer2();
         player2TotalScore += diceNumber;
         player2DiceScore.innerHTML = player2TotalScore;
     } else {
-        // Player 1's turn
         activePlayer1();
         player1TotalScore += diceNumber;
         player1DiceScore.innerHTML = player1TotalScore;
     }
 
-    // If the dice rolls a 1, reset the current player's score and switch players
+    // If dice rolls a 1, reset score and switch player, disable "Hold"
     if (diceNumber === 1) {
         if (currentPlayer === 1) {
             resetPlayer1();
@@ -98,42 +101,42 @@ rollDice.addEventListener('click', (e) => {
             activePlayer1();
             currentPlayer = 1;
         }
+        updateButtonState(true, false, false); // Disable "Hold", enable "Roll Dice", disable "New Game"
+    } else {
+        updateButtonState(false, false, false); // Enable "Hold", enable "Roll Dice", disable "New Game"
     }
 });
 
 // Hold the score: Add the current player's round score to their total score and switch turns
 holdScore.addEventListener('click', (e) => {
     if (currentPlayer === 2) {
-        // Add Player 2's round score to their total score
         player2Score.innerHTML = parseInt(player2Score.innerHTML || 0) + player2TotalScore;
-        player2TotalScore = 0; // Reset round score
+        player2TotalScore = 0;
         player2DiceScore.innerHTML = player2TotalScore;
 
-        // Check if Player 2 has won
         if (parseInt(player2Score.innerHTML) >= 100) {
             alert('Player 2 wins the game!');
-            newGame.click(); // Restart the game
-            return; // Exit the function to prevent switching players
+            updateButtonState(true, true, false); // Disable "Hold" and "Roll Dice", enable "New Game"
+            return;
         }
 
-        // Switch to Player 1
         activePlayer1();
         currentPlayer = 1;
     } else {
-        // Add Player 1's round score to their total score
         player1Score.innerHTML = parseInt(player1Score.innerHTML || 0) + player1TotalScore;
-        player1TotalScore = 0; // Reset round score
+        player1TotalScore = 0;
         player1DiceScore.innerHTML = player1TotalScore;
 
-        // Check if Player 1 has won
         if (parseInt(player1Score.innerHTML) >= 100) {
             alert('Player 1 wins the game!');
-            newGame.click(); // Restart the game
-            return; // Exit the function to prevent switching players
+            updateButtonState(true, true, false); // Disable "Hold" and "Roll Dice", enable "New Game"
+            return;
         }
 
-        // Switch to Player 2
         activePlayer2();
         currentPlayer = 2;
     }
+
+    // After holding, disable "Hold" and enable "Roll Dice"
+    updateButtonState(true, false, false);
 });
