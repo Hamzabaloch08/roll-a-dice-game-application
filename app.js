@@ -49,6 +49,7 @@ newGame.addEventListener('click', (e) => {
 // roll a dice click eventFunction
 rollDice.addEventListener('click', (e) => {
     e.preventDefault();
+
     diceImg.classList.remove('diceImg');
 
     // random number generator
@@ -81,14 +82,19 @@ rollDice.addEventListener('click', (e) => {
 
 // holding score click eventfunction
 holdScore.addEventListener('click', (e) => {
-    e.preventDefault()
-    if (currentPlayer === 1) {
-        player1Score.textContent + player1TotalScore
-        resetPlayer1()
-        activePlayer2();
+    if (currentPlayer === 2) {
+        player2Score.innerHTML = parseInt(player2Score.innerHTML || 0) + player2TotalScore; // Add running score to held score
+        player2TotalScore = 0; // Reset running score for this round
+        player2DiceScore.innerHTML = player2TotalScore; // Update displayed running score
+        activePlayer1(); // Switch to Player 1
+        currentPlayer = 1; // Update currentPlayer
     } else {
-        player2Score.textContent + player2TotalScore
-        resetPlayer2();
-        activePlayer1();
+        player1Score.innerHTML = parseInt(player1Score.innerHTML || 0) + player1TotalScore; // Add running score to held score
+        player1TotalScore = 0; // Reset running score for this round
+        player1DiceScore.innerHTML = player1TotalScore; // Update displayed running score
+        activePlayer2(); // Switch to Player 2
+        currentPlayer = 2; // Update currentPlayer
     }
 });
+
+
