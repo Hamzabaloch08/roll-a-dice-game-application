@@ -101,7 +101,7 @@ rollDice.addEventListener('click', () => {
     } else {
         updateButtonState(false, false, false); // Enable "Hold", enable "Roll Dice", disable "New Game"
     }
-    
+
 });
 
 // Hold the score: Add the current player's round score to their total score and switch turns
