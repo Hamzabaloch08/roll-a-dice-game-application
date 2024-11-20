@@ -89,12 +89,19 @@ rollDice.addEventListener('click', () => {
 
     // If dice rolls a 1, reset score and switch player, disable "Hold"
     if (diceNumber === 1) {
-        currentPlayer === 1 ? resetPlayer1() : resetPlayer2();
+        if (currentPlayer === 1) {
+            resetPlayer1();
+            activePlayer2()
+        } else {
+            resetPlayer2();
+            activePlayer1()
+        }
         currentPlayer = currentPlayer === 1 ? 2 : 1;
         updateButtonState(true, false, false); // Disable "Hold", enable "Roll Dice", disable "New Game"
     } else {
         updateButtonState(false, false, false); // Enable "Hold", enable "Roll Dice", disable "New Game"
     }
+    
 });
 
 // Hold the score: Add the current player's round score to their total score and switch turns
