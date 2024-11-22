@@ -123,7 +123,7 @@
 
 @media screen and (max-width: 768px) {
   .diceGameBox {
-    width: 70%;
+    width: 75%;
   }
 
   .players {
@@ -131,43 +131,41 @@
   }
 
   .playersDetail {
-    gap: 5px;
+    gap: 3px;
   }
 
   .playersDetail > h1 {
-    font-size: 1.6rem;
+    font-size: 1.3rem;
   }
 
   .playersDetail > h1:last-child {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 
   .currentScoreBox {
-    padding: 10px 25px;
-    gap: 0px;
+    padding: 8px 20px;
+    border-radius: 6px;
   }
 
   .currentScoreBox > h3 {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
   }
 
   .currentScoreBox > h3:last-child {
-    font-size: 1rem;
+    font-size: 0.8rem;
   }
 
   .buttons {
-    height: 70vh;
+    height: 60vh;
   }
 
   .buttons > div > button {
-    padding: 8px 15px;
-    font-size: 0.7rem;
-    border-radius: 8px;
+    padding: 7px 12px;
+    font-size: 0.6rem;
   }
 
   #diceImg {
-    width: 80px;
-    height: 80px;
-    padding: 10px;
+    width: 70px;
+    height: 70px;
   }
 }
