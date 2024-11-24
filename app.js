@@ -65,7 +65,7 @@ newGame.addEventListener('click', () => {
     activePlayer1();
 
     // Reset buttons and dice image
-    updateButtonState(true, false, false); // Disable "Hold", enable "Roll Dice", disable "New Game"
+    updateButtonState(true, false, true); // Disable "Hold", enable "Roll Dice", disable "New Game"
     diceImg.src = './assets/1.png'; // Reset dice image
     diceImg.classList.add('diceImg'); // Hide the dice initially
 });
