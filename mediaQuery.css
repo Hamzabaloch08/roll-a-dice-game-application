@@ -169,3 +169,51 @@
     height: 70px;
   }
 }
+
+@media screen and (max-width: 590px) {
+  .diceGameBox {
+    width: 80%;
+  }
+
+  .players {
+    height: 60vh;
+  }
+
+  .playersDetail > h1 {
+    font-size: 1.1rem;
+  }
+
+  .playersDetail > h1:last-child {
+    font-size: 1.3rem;
+  }
+
+  .currentScoreBox {
+    padding: 8px 16px;
+  }
+
+  .currentScoreBox > h3 {
+    font-size: 0.65rem;
+  }
+
+  .currentScoreBox > h3:last-child {
+    font-size: 0.7rem;
+  }
+
+  .buttons {
+    height: 50vh;
+  }
+
+  .buttons > div > button {
+    padding: 6px 8px;
+    font-size: 0.5rem;
+  }
+
+  .buttons > div > button:hover {
+    opacity: 1;
+  }
+
+  #diceImg {
+    width: 70px;
+    height: 70px;
+  }
+}
