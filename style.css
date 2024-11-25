@@ -93,6 +93,7 @@ body {
   flex-direction: column;
   gap: 5px;
   text-align: center;
+  text-transform: capitalize;
 }
 
 .currentScoreBox > h3 {
