@@ -170,7 +170,7 @@
   }
 }
 
-@media screen and (max-width: 590px) {
+@media screen and (max-width: 575px) {
   .diceGameBox {
     width: 80%;
   }
@@ -188,11 +188,11 @@
   }
 
   .currentScoreBox {
-    padding: 8px 16px;
+    padding: 6px 12px;
   }
 
   .currentScoreBox > h3 {
-    font-size: 0.65rem;
+    font-size: 0.6rem;
   }
 
   .currentScoreBox > h3:last-child {
@@ -215,5 +215,70 @@
   #diceImg {
     width: 70px;
     height: 70px;
+  }
+}
+
+
+@media screen and (max-width: 425px) {
+  .diceGameBox {
+    width: 100%;
+  }
+
+  .playersDetail > h1 {
+    font-size: 1rem;
+  }
+
+  .currentScoreBox {
+    padding: 5px 10px;
+  }
+
+  .currentScoreBox > h3 {
+    font-size: 0.5rem;
+  }
+
+  .buttons {
+    height: 40vh;
+  }
+
+  .buttons > div > button {
+    padding: 6px 7px;
+    font-size: 0.45rem;
+  }
+
+  #diceImg {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .players {
+    height: 50vh;
+  }
+
+  .playersDetail > h1 {
+    font-size: 0.8rem;
+  }
+
+  .currentScoreBox {
+    padding: 4px 9px;
+  }
+
+  .buttons > div > button {
+    padding: 6px 6px;
+    font-size: 0.4rem;
+  }
+}
+@media screen and (max-width: 320px) {
+  .players {
+    height: 45vh;
+  }
+
+  .playersDetail > h1 {
+    font-size: 0.7rem;
+  }
+
+  .playersDetail >h1:last-child{
+    font-size: 0.7rem;
   }
 }
